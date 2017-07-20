@@ -14,58 +14,59 @@ function Player(id){
 }
 
 Board.prototype.gameOver = function() {
-  if (this.space[0][0] === "X" && this.space[0][1] === "X" && this.space[0][2] === "X") {
+  var one = this.space[0][0];
+  var two = this.space[0][1];
+  var three = this.space[0][2];
+  var four = this.space[1][0];
+  var five = this.space[1][1];
+  var six = this.space[1][2];
+  var seven = this.space[2][0];
+  var eight = this.space[2][1];
+  var nine = this.space[2][2];
+
+  if ((one === "X" && two === "X" && three === "X") || (one === "O" && two === "O" && three === "O")){
     return true; //row1
-  } else if (this.space[0][0] === "O" && this.space[0][1] === "O" && this.space[0][2] === "O") {
-    return true; //row1
-  } else if (this.space[1][0] === "X" && this.space[1][1] === "X" && this.space[1][2] === "X") {
+  } else if ((four === "X" && five === "X" && six === "X") || (four === "O" && five === "O" && six === "O")) {
     return true; //row2
-  } else if (this.space[1][0] === "O" && this.space[1][1] === "O" && this.space[1][2] === "O") {
-    return true; //row2
-  } else if (this.space[2][0] === "X" && this.space[2][1] === "X" && this.space[2][2] === "X") {
+  } else if ((seven === "X" && eight === "X" && nine === "X") || (seven === "O" && eight === "O" && nine === "O")) {
     return true; //row3
-  } else if (this.space[2][0] === "O" && this.space[2][1] === "O" && this.space[2][2] === "O") {
-    return true; //row3
-  } else if (this.space[0][0] === "X" && this.space[1][0] === "X" && this.space[2][0] === "X") {
+  } else if ((one === "X" && four === "X" && seven === "X") || (one === "O" && four === "O" && seven === "O")){
     return true; //column1
-  } else if (this.space[0][0] === "O" && this.space[1][0] === "O" && this.space[2][0] === "O") {
-    return true; //column1
-  } else if (this.space[0][1] === "X" && this.space[1][1] === "X" && this.space[2][1] === "X") {
+  } else if ((two === "X" && five === "X" && eight === "X") || (two === "O" && five === "O" && eight === "O")){
     return true; //column2
-  } else if (this.space[0][1] === "O" && this.space[1][1] === "O" && this.space[2][1] === "O") {
-    return true; //column2
-  } else if (this.space[0][2] === "X" && this.space[1][2] === "X" && this.space[2][2] === "X") {
+  } else if ((three === "X" && six === "X" && nine === "X") || (three === "O" && six === "O" && nine === "O")){
     return true; //column3
-  } else if (this.space[0][2] === "O" && this.space[1][2] === "O" && this.space[2][2] === "O") {
-    return true; //column3
-  } else if (this.space[0][0] === "X" && this.space[1][1] === "X" && this.space[2][2] === "X") {
+  } else if ((one === "X" && five === "X" && nine === "X") || (one === "O" && five === "O" && nine === "O")){
     return true; //diagonalL
-  } else if (this.space[0][0] === "O" && this.space[1][1] === "O" && this.space[2][2] === "O") {
-    return true; //diagonalL
-  } else if (this.space[0][2] === "X" && this.space[1][1] === "X" && this.space[2][0] === "X") {
+  } else if ((three === "X" && five === "X" && seven === "X") || (three === "O" && five === "O" && seven === "O")){
       return true; //diagonalR
-  } else if (this.space[0][2] === "O" && this.space[1][1] === "O" && this.space[2][0] === "O") {
-    return true; //diagonalR
   } else {
     return false;
   }
 }
 
+function reset() {
+  board = new Board();
+    $("#space1").text(board.space[0][0]);
+    $("#space2").text(board.space[0][1]);
+    $("#space3").text(board.space[0][2]);
+    $("#space4").text(board.space[1][0]);
+    $("#space5").text(board.space[1][1]);
+    $("#space6").text(board.space[1][2]);
+    $("#space7").text(board.space[2][0]);
+    $("#space8").text(board.space[2][1]);
+    $("#space9").text(board.space[2][2]);
+    $("td").css("color", "white");
+    $("td").addClass("number");
+}
 
 $(document).ready(function() {
-  board = new Board();
-  $("#space1").text(board.space[0][0]);
-  $("#space2").text(board.space[0][1]);
-  $("#space3").text(board.space[0][2]);
-  $("#space4").text(board.space[1][0]);
-  $("#space5").text(board.space[1][1]);
-  $("#space6").text(board.space[1][2]);
-  $("#space7").text(board.space[2][0]);
-  $("#space8").text(board.space[2][1]);
-  $("#space9").text(board.space[2][2]);
+  reset();
 
   $("#login").submit(function(event) {
     event.preventDefault();
+
+
     playerXName = $("#playerX").val();
     playerOName = $("#playerO").val();
 
@@ -78,23 +79,28 @@ $(document).ready(function() {
     $(".X").css("background-color", "green");
   });
 
-  $("td").click(function() {
-
+  $("td").click(function(event) {
+    $(this).removeClass("number");
+event.preventDefault();
       currentSpaceValue = $(this).html(); //1
       if (counter % 2 !== 0) {
         playerX = new Player("X");
+
         for (i = 0; i < board.space.length; i++) {
           for (j = 0; j < board.space[i].length; j++) {
             if (board.space[i][j] == currentSpaceValue) {
               board.space[i][j] = "X";
+              $(this).text(playerX.id).css("color", "black");
               var over = board.gameOver();
               if (over) {
                 alert("Congratulations " + playerXName + " you beat " + playerOName + "!!!");
+                reset();
+
               }
             }
           }
         }
-      $(this).text(playerX.id);
+
 
         $(".O").css("background-color", "green");
         $(".X").css("background-color", "white");
@@ -106,14 +112,21 @@ $(document).ready(function() {
           for (j = 0; j < board.space[i].length; j++) {
             if (board.space[i][j] == currentSpaceValue) {
               board.space[i][j] = "O";
+              $(this).text(playerO.id).css("color", "black");
               var over = board.gameOver();
               if (over) {
-                alert("Congratulations " + playerOName + " you beat " + playerXName + "!!!");;
+                setTimeout(function(){
+                  alert("Congratulations " + playerOName + " you beat " + playerXName + "!!!");
+                }, 10);
+                setTimeout(function(){
+                  reset();
+                }, 1000);
+
               }
             }
           }
         }
-        $(this).text(playerO.id);
+
         $(".X").css("background-color", "green");
         $(".O").css("background-color", "white");
         counter++;
