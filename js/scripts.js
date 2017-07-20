@@ -15,19 +15,38 @@ function Player(id){
 
 Board.prototype.gameOver = function() {
   if (this.space[0][0] === "X" && this.space[0][1] === "X" && this.space[0][2] === "X") {
-    return true;
+    return true; //row1
   } else if (this.space[0][0] === "O" && this.space[0][1] === "O" && this.space[0][2] === "O") {
-    return true;
+    return true; //row1
   } else if (this.space[1][0] === "X" && this.space[1][1] === "X" && this.space[1][2] === "X") {
-    return true;
+    return true; //row2
   } else if (this.space[1][0] === "O" && this.space[1][1] === "O" && this.space[1][2] === "O") {
-    return true;
+    return true; //row2
   } else if (this.space[2][0] === "X" && this.space[2][1] === "X" && this.space[2][2] === "X") {
-    return true;
+    return true; //row3
   } else if (this.space[2][0] === "O" && this.space[2][1] === "O" && this.space[2][2] === "O") {
-    return true;
-  }
-  else {
+    return true; //row3
+  } else if (this.space[0][0] === "X" && this.space[1][0] === "X" && this.space[2][0] === "X") {
+    return true; //column1
+  } else if (this.space[0][0] === "O" && this.space[1][0] === "O" && this.space[2][0] === "O") {
+    return true; //column1
+  } else if (this.space[0][1] === "X" && this.space[1][1] === "X" && this.space[2][1] === "X") {
+    return true; //column2
+  } else if (this.space[0][1] === "O" && this.space[1][1] === "O" && this.space[2][1] === "O") {
+    return true; //column2
+  } else if (this.space[0][2] === "X" && this.space[1][2] === "X" && this.space[2][2] === "X") {
+    return true; //column3
+  } else if (this.space[0][2] === "O" && this.space[1][2] === "O" && this.space[2][2] === "O") {
+    return true; //column3
+  } else if (this.space[0][0] === "X" && this.space[1][1] === "X" && this.space[2][2] === "X") {
+    return true; //diagonalL
+  } else if (this.space[0][0] === "O" && this.space[1][1] === "O" && this.space[2][2] === "O") {
+    return true; //diagonalL
+  } else if (this.space[0][2] === "X" && this.space[1][1] === "X" && this.space[2][0] === "X") {
+      return true; //diagonalR
+  } else if (this.space[0][2] === "O" && this.space[1][1] === "O" && this.space[2][0] === "O") {
+    return true; //diagonalR
+  } else {
     return false;
   }
 }
