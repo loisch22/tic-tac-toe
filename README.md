@@ -21,12 +21,11 @@ Behavior | Input | Output
  3. X clicks other spaces and shows in the space clicked | Click other spaces | X shows where clicked
  4. Repeat specs 2-3 with O's | 0 clicks space | O shows in space that was clicked
  5. X and O's can click on board and display X/O where it was clicked| X clicks empty space, O clicks empty space | X and O shows where they were clicked
- 6. If all X's or O's are in row/column 1 = player wins| XXX | X wins!
- 7. If all X'S or O's are in row/column 2 = player wins | OOO | O wins!
- 8. If all X'S or O's are in row/column 3 = player wins | XXX | X wins!
- 9. If all X'S or O's are diagonal from left to right | XXX | X wins!
- 10. If all X'S or O's are diagonal from right to left | OOO | O wins!
- 11. If X or O meets any of specs 6-10, game is over, board is cleared, can continue playing or exit game | Game wins | Clear board, start again or exit
+ 6. If all X's or O's are in row1, row2, row3 = player wins| XXX | X wins!
+ 7. If all X'S or O's are in column1, column2, column3 = player wins | OOO | O wins!
+ 8. If all X'S or O's are diagonal from left to right | XXX | X wins!
+ 9. If all X'S or O's are diagonal from right to left | OOO | O wins!
+ 10. If X or O meets any of specs 6-9, game is over, board is reset, can continue playing or exit game | Game wins | Clear board, start again or exit
 
 
 # Known Bugs
