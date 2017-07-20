@@ -20,6 +20,12 @@ Board.prototype.gameOver = function() {
     return true;
   } else if (this.space[1][0] === "X" && this.space[1][1] === "X" && this.space[1][2] === "X") {
     return true;
+  } else if (this.space[1][0] === "O" && this.space[1][1] === "O" && this.space[1][2] === "O") {
+    return true;
+  } else if (this.space[2][0] === "X" && this.space[2][1] === "X" && this.space[2][2] === "X") {
+    return true;
+  } else if (this.space[2][0] === "O" && this.space[2][1] === "O" && this.space[2][2] === "O") {
+    return true;
   }
   else {
     return false;
