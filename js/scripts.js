@@ -62,21 +62,17 @@ function reset() {
 
 $(document).ready(function() {
   reset();
-
   $("#login").submit(function(event) {
     event.preventDefault();
-
-
     playerXName = $("#playerX").val();
     playerOName = $("#playerO").val();
-
     $("#playerXName").text(playerXName);
     $("#playerOName").text(playerOName);
-
     $("#gameBoard").show();
     $("#login").hide();
-
-    $(".X").css("background-color", "green");
+    $(".jumbotron").hide();
+    $(".X").css("background-color", "yellow");
+    $(".O").css("background-color", "#F9FDE4");
   });
 
   $("td").click(function(event) {
@@ -93,17 +89,18 @@ event.preventDefault();
               $(this).text(playerX.id).css("color", "black");
               var over = board.gameOver();
               if (over) {
-                alert("Congratulations " + playerXName + " you beat " + playerOName + "!!!");
-                reset();
-
+                setTimeout(function(){
+                  alert("Congratulations " + playerXName + " you beat " + playerOName + "!!!");
+                }, 10);
+                setTimeout(function(){
+                  reset();
+                }, 1000);
               }
             }
           }
         }
-
-
-        $(".O").css("background-color", "green");
-        $(".X").css("background-color", "white");
+        $(".O").css("background-color", "yellow");
+        $(".X").css("background-color", "#F9FDE4");
         counter++;
       }else {
         playerO = new Player("O");
@@ -121,20 +118,21 @@ event.preventDefault();
                 setTimeout(function(){
                   reset();
                 }, 1000);
-
               }
             }
           }
         }
-
-        $(".X").css("background-color", "green");
-        $(".O").css("background-color", "white");
+        $(".X").css("background-color", "yellow");
+        $(".O").css("background-color", "#F9FDE4");
         counter++;
       }
     });
 
   $("#exit").click(function() {
     $("#login").show();
+    $(".jumbotron").show();
     $("#gameBoard").hide();
+    playerXName = $("#playerX").val("");
+    playerOName = $("#playerO").val("");
   });
 });

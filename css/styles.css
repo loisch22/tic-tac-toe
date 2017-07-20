@@ -13,6 +13,15 @@ body {
   width: 100vw;
   height: 100vh;
   margin-bottom: 0;
+  margin-top: 0;
+}
+
+.secBackground {
+  background-image: url("../img/green-o.png");
+}
+
+#table {
+  background-color: #F9FDE4;
 }
 
 .col-md-4 {
@@ -25,6 +34,7 @@ body {
   display: none;
 }
 
+
 #playerX, #playerO {
   font-size: 40px;
   padding: 30px;
@@ -33,9 +43,12 @@ body {
 .X, .O {
   border: solid;
   padding: 35px;
-  font-size: 40px;
   margin-top: 20px;
+  font-size: 50px;
+  font-weight: bolder;
+  text-align: center;
 }
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -68,4 +81,9 @@ h2 {
 
 label {
   font-size: 40px;
+}
+#exit {
+  font-size: 40px;
+  padding: 10px 200px 10px 200px;
+  margin-bottom: 180px;
 }
