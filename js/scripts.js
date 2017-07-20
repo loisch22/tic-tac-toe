@@ -36,13 +36,18 @@ var counter = 1;
   });
 
   $("td").click(function() {
-      if (counter % 2 !== ) {
+    console.log(counter);
+      if (counter % 2 !== 0) {
         player = new Player("X");
         $(this).text(player.id);
+        $(".X").css("background-color", "green");
+        $(".O").css("background-color", "white");
         counter++;
       }else {
         player = new Player("O");
         $(this).text(player.id);
+        $(".X").css("background-color", "white");
+        $(".O").css("background-color", "green");
         counter++;
       }
     });

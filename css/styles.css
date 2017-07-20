@@ -8,7 +8,7 @@
   display: none;
 }
 
-.XO {
+.X, .O {
   border: solid;
   padding: 35px;
   font-size: 40px;
