@@ -1,0 +1,26 @@
+.col-md-4 {
+  border: solid;
+  padding: 30px;
+  margin: 2px;
+}
+
+#gameBoard {
+  display: none;
+}
+
+.XO {
+  border: solid;
+  padding: 35px;
+  font-size: 40px;
+  margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+th, td {
+    padding: 35px;
+    text-align: center;
+
+}
